@@ -20,24 +20,29 @@ public class Service1Application {
 
     /*
 
-    Uncomment this tracer if you want to use the Je
+    Uncomment this tracer if you want to use the Jaeger tracer
     @Bean
     public Tracer jaegerTracer() {
 
         return new Configuration("myjaeger-tracer").getTracerBuilder().build();
     }*/
 
+
+/*
+   Uncomment this tracer if you want to use the Lightstep tracer
+
     @Bean
     public Tracer lightStepTracer() throws Exception {
         return new com.lightstep.tracer.jre.JRETracer(
                 new com.lightstep.tracer.shared.Options.OptionsBuilder()
-                        .withAccessToken("6fd564a1ef95843af419a0e6c289d683")
+                        .withAccessToken("<project access api>")
                         .withComponentName("mylightstep-tracer")
                         .withCollectorHost("localhost")
-                        .withCollectorPort(8443)
+                        .withCollectorPort(80)
                         .build()
         );
     }
+*/
 
     public static void main(String[] args) {
         SpringApplication.run(Service1Application.class, args);
