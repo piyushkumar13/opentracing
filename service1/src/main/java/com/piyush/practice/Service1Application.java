@@ -1,9 +1,5 @@
 package com.piyush.practice;
 
-import io.jaegertracing.Configuration;
-import io.jaegertracing.internal.JaegerTracer;
-import io.jaegertracing.internal.samplers.ProbabilisticSampler;
-import io.opentracing.Tracer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +24,7 @@ public class Service1Application {
     }*/
 
 
-/*
+   /*
    Uncomment this tracer if you want to use the Lightstep tracer
 
     @Bean
@@ -42,7 +38,7 @@ public class Service1Application {
                         .build()
         );
     }
-*/
+    */
 
     public static void main(String[] args) {
         SpringApplication.run(Service1Application.class, args);
