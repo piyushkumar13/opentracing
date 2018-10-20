@@ -68,8 +68,8 @@ This endpoint is called by service1.
     }
     */
     ```
-2. Run service1 at port 8080.
+2. Run service1 at port 8888.
 3. Run service2 at port 8081.
 4. Setup and run [Jaeger](https://www.jaegertracing.io/docs/1.7/getting-started/#AllinOne) or [Lightstep](https://docs.lightstep.com/docs/satellite-setup) as docker container on your local. Depending on your choice.
-5. Hit endpoint http://localhost:8080/forward.
+5. Hit endpoint http://localhost:8888/forward.
 6. Observe the traces in the Tracer UI (Jaeger or Lightstep)
