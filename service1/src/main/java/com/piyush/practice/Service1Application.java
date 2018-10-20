@@ -15,23 +15,19 @@ public class Service1Application {
         return new RestTemplate();
     }
 
-    /*
-
-    Uncomment this tracer if you want to use the Jaeger tracer
-    @Bean
+//    Uncomment this tracer if you want to use the Jaeger tracer
+    /*@Bean
     public Tracer jaegerTracer() {
 
         return new Configuration("myjaeger-tracer").getTracerBuilder().build();
     }*/
 
-/*
-   Uncomment this tracer if you want to use the Lightstep tracer
-
-    @Bean
+//   Uncomment this tracer if you want to use the Lightstep tracer
+/*    @Bean
     public Tracer lightStepTracer() throws Exception {
         return new com.lightstep.tracer.jre.JRETracer(
                 new com.lightstep.tracer.shared.Options.OptionsBuilder()
-                        .withAccessToken("<project_level_access_token>")
+                        .withAccessToken("42679b79c4c1f4d3e30cc2b9212d9ffb")
                         .withComponentName("mylightstep-tracer")
                         .withCollectorHost("localhost")
                         .withCollectorPort(8181)
