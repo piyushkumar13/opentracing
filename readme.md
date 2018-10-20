@@ -1,3 +1,35 @@
+## Setup Lightstep Satellite (If using Lightstep tracer)
+Lightstep Satellite runs on your premise and act as the proxy. Whenever your application produces any traces, it will 
+first sends it to Satellite which then sends it to the Lightstep UI(SAAS).
+You can configure the lightstep satellite using command : 
+
+```bash
+docker run -p 80:80 -p8000:8000 -e COLLECTOR_API_KEY={your_API_key} lightstep/collector:latest
+```
+This satellite will work only for **Go, JS, Objc, PHP, Python, Ruby**.
+
+For **Java and all other languages mentioned above** use following command :
+ 
+```bash
+docker run -e COLLECTOR_BABYSITTER_PORT=8000  -p 8000:8000 -e COLLECTOR_PLAIN_PORT=8383 -p 8383:8383 -e COLLECTOR_ADMIN_PLAIN_PORT=8080 -p 8080:8080 -e COLLECTOR_API_KEY=<Account_Level_API_KEY> -e COLLECTOR_HTTP_PLAIN_PORT=8181 -p 8181:8181 -e COLLECTOR_GRPC_PLAIN_PORT=8282 -p 8282:8282 lightstep/collector:latest
+``` 
+
+## Setup Jaeger (If using Jaeger tracer)
+Use following docker command to run Jaeger locally : 
+```bash
+docker run -d --name jaeger \
+  -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
+  -p 5775:5775/udp \
+  -p 6831:6831/udp \
+  -p 6832:6832/udp \
+  -p 5778:5778 \
+  -p 16686:16686 \
+  -p 14268:14268 \
+  -p 9411:9411 \
+  jaegertracing/all-in-one:1.7
+```
+
+## Project Setup
 This project contains the example which shows how to use Opentracing with Spring boot application.
 I am using two opentracing implementations : 
 * Uber Jaeger
@@ -26,10 +58,11 @@ This endpoint is called by service1.
     public Tracer lightStepTracer() throws Exception {
         return new com.lightstep.tracer.jre.JRETracer(
                 new com.lightstep.tracer.shared.Options.OptionsBuilder()
-                        .withAccessToken("<project access api>")
+                        .withAccessToken("<project_level_access_token>")
                         .withComponentName("mylightstep-tracer")
                         .withCollectorHost("localhost")
-                        .withCollectorPort(80)
+                        .withCollectorPort(8181) // HTTP port used when configuring Lightstep satellite in docker command.
+                        .withCollectorProtocol("http")
                         .build()
         );
     }

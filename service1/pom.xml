@@ -47,6 +47,12 @@
             <artifactId>tracer-okhttp</artifactId>
         </dependency>
 
+
+		<!--<dependency>-->
+			<!--<groupId>com.lightstep.tracer</groupId>-->
+			<!--<artifactId>tracer-grpc</artifactId>-->
+		<!--</dependency>-->
+
         <!--<dependency>-->
             <!--<groupId>org.slf4j</groupId>-->
             <!--<artifactId>slf4j-simple</artifactId>-->
