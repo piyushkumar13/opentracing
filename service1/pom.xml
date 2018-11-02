@@ -21,6 +21,10 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>io.opentracing.contrib</groupId>
@@ -44,7 +48,8 @@
             <artifactId>tracer-okhttp</artifactId>
         </dependency>
 
-        <!--Uncomment following dependencies if you are using lightstep over GRPC and comment the tracer-okhttp dependency mentioned above-->
+        <!--Uncomment following dependencies if you are using lightstep over GRPC and comment the tracer-okhttp dependency-->
+        <!--mentioned above-->
         <!--<dependency>-->
             <!--<groupId>com.lightstep.tracer</groupId>-->
             <!--<artifactId>tracer-grpc</artifactId>-->
