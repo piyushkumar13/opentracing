@@ -13,8 +13,16 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class Service2Controller {
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @GetMapping(path = "/svc2/hello")
-    public String sayHello(){
+    public String sayHello() {
         return "Hello";
+    }
+
+    @GetMapping(path = "/svc2/forward")
+    public String forwardSvc2Req() {
+        return restTemplate.getForEntity("http://localhost:8082/svc3/hello", String.class).getBody();
     }
 }

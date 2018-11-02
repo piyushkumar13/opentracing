@@ -20,9 +20,15 @@ public class Service1Controller {
 
 
     @GetMapping(path = "/svc1/forward")
-    public String forwardReq(){
+    public String forwardReq() {
 
-         return restTemplate.getForEntity("http://localhost:8081/svc2/hello",String.class).getBody();
+        return restTemplate.getForEntity("http://localhost:8081/svc2/hello", String.class).getBody();
+    }
+
+    @GetMapping(path = "/svc1/forward-far")
+    public String forwardFarReq() {
+
+        return restTemplate.getForEntity("http://localhost:8081/svc2/forward", String.class).getBody();
     }
 
 }
